@@ -1,0 +1,74 @@
+{% extends 'base2.html' %}
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="widget widgetlogin">
+          <div class="widgethead loginpage">
+            <h5>Login Now</h5>
+            <div id="successMessage" class="getmessages">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  <ul class=flashes>
+                  {% for category, message in messages %}
+                    <div class="alert {{ category }}"> {{ message|capitalize }} &times; </div>
+                    <!-- <li>{{ message }}</li> -->
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+              {% endwith %}
+            </div>
+          </div>
+          <div class="widgetcontent">
+            <form class="formthem" method="POST">
+              {{ form.csrf_token }}
+              <fieldset>
+                <div class="form-group">
+                  <label for="email">  Email</label>
+                  {{ form.email(class_ = 'form-control loginform', autofocus = true, placeholder = 'Email') }}
+                </div>
+                <div class="form-group">
+                  <label for="password">  Password</label>
+                  {{ form.password(class_ = 'form-control loginform', autofocus = true, placeholder = 'Passoword') }}                  
+                </div>
+
+                <div class="form-check forgotpass">
+                  <div class="checkboxa">
+                    <div class="checkember">
+                      {{ form.remember(class_ = 'forcheckonly', autofocus = true) }}                      
+                    <label for="login" class="labellogin">
+                      Remember Me
+                    </label>
+                    </div>
+                    <div class="fofrgotpass">
+                      <a href="{{ url_for('forgotpassemail') }}" class="forgotpass">Forgot Password?</a>  
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="recaptcha">
+                    {{ form.recaptcha }}
+                  </label>
+                </div>
+                <div class="btnarea lgsubmit">
+                  {{ form.submit(class='btn btn-primary btn-lg btn-block') }}
+                </div>
+              </fieldset>
+            </form>
+          </div>
+          <div class="border-top pt-3">
+            <small class="text-muted">
+              Need An Account? 
+              <a href="{{ url_for('register') }}" class="ml-2">Sing Up Now</a>
+            </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    setTimeout(function() {
+    $('#successMessage').fadeOut('fast');
+    }, 3000); // <-- time in milliseconds
+  </script>
+{% endblock %}

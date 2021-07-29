@@ -1,0 +1,217 @@
+{% extends 'base3.html' %}
+{% block title %} {% endblock %}
+{% block banner %} Submit Your Article {% endblock %}
+
+{% block body %} 
+    <div class="sectionspace">
+        <div class="container">
+            <div class="arow row">
+                <div class="twocolumns">
+                    <div class="col-3">
+                        <aside id="asidebar" class="asidebar widgetbox">
+                            <div class="widgetprofile">
+                                <div class="widgetcontent">
+                                    <figure>
+                                        {% block profileimg %} <img src="{{ url_for('static', filename='atom.png') }}" alt="image"> {% endblock %}
+                                        <a href="javascript:void(0);"><i class="fa fa-pencil"></i></a>
+                                    </figure>
+                                    <div class="admininfo">
+                                        <h3>{{ current_user.username }}</h3>
+                                        <h4>Author</h4>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="widgetdashboard">
+                                <nav id="dashboardnav" class="dashboardnav">
+                                    <ul>
+                                        <li><a href="{{ url_for('articlelist') }}"><i class="fa fa-refresh"></i> <span>Articles Under Review</span></a></li>
+                                        <li><a href="{{ url_for('addtemplates') }}"><i class="fa fa-briefcase"></i> <span>Add Templates</span></a></li>
+                                        <li><a href="{{ url_for('articlelist') }}"><i class="fa fa-refresh"></i> <span>Aticle List</span></a></li>
+                                        <li><a href="{{ url_for('generalsettings') }}"><i class="fa fa-tasks"></i> <span>General Settings</span></a></li>
+                                        <li><a href="{{ url_for('manageuser') }}"><i class="fa fa-users"></i> <span>Manage Users</span></a></li>
+                                        <li><a href="{{ url_for('manageeditions') }}"><i class="fa fa-tag"></i> <span>Manage Editions</span></a></li>
+                                        <li><a href="{{ url_for('emailtemplates') }}"><i class="fa fa-envelope"></i> <span>Email Templates</span></a></li>
+                                        <li><a href="{{ url_for('accountsettings') }}"><i class="fa fa-lock"></i> <span>Account Settings</span></a></li>
+                                        <li><a href="{{ url_for('login') }}"><i class="fa fa-sign-out"></i> <span>Logout</span></a></li>
+                                      </ul>
+                                </nav>
+                            </div>
+                        </aside>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9 float-right">
+                        <!-- <form action="" enctype="multipart/form-data" class="formtheme formartcile" id="paper-form" method="POST">
+                             -->
+                            <div id="content" class="content addarticleholdcontent">
+                                <div class="dashboardboxtitle titlewithform">
+                                    <h2>Articles Under Review</h2>
+                                    <form class="formtheme formsearchvtwo">
+                                        <div class="sortupdown">
+                                            <a href="javascript:void(0);"><i class="fa  fa-sort-amount-desc"></i></a>
+                                        </div>
+                                        <fieldset>
+                                            <input type="search" name="search" class="form-control" placeholder="Search here">
+                                            <button type="submit" class="btnsearch"><i class="fa fa-search"></i></button>
+                                        </fieldset>
+                                    </form>
+                                </div>
+                                <ul id="accordion" class="articledetails articledetailsvtwo">
+                                    {% for paper in papers %}
+                                
+                                    <li id="headingOne-{{paper['id']}}" class="articleheader" data-toggle="collapse" data-target="#collapseOne-{{paper['id']}}" aria-expanded="true" aria-controls="collapseOne-{{paper['id']}}">
+                                        <div class="detailstime">
+                                            <span><i class="fa fa-calendar-o ti-"></i>{{paper['created_time']}}</span>
+                                            <span><i class="fa fa-window-restore ti-"></i>Category Title</span>
+                                            <span><i class="fa fa-bookmark-o ti-"></i>ID: #{{paper['id']}}</span>
+                                            <span><i class="fa fa-book ti-"></i>Edition</span>
+                                            <h4>{{paper['title']}}</h4>
+                                        </div>    
+
+                                        <div class="nameandmail">
+                                            <span>Corresponding Author</span>
+                                            <h4>Aleen Mosour</h4>
+                                            <span class="mailinfo">aleen@domainurl.com</span>
+                                        </div>
+                                    </li>
+                                    <li id="collapseOne-{{paper['id']}}" class="collapse active userinfohold" aria-labelledby="headingOne-{{paper['id']}}" data-parent="#accordion">
+                                        <div class="userinfoimgname">
+                                            <figure class="userinfimg">
+                                                <img src="http://amentotech.com/htmls/amentojourn/images/thumbnails/img-02.jpg" alt="img description">
+                                            </figure>
+                                            <div class="userinfoname">
+                                                <span>{{paper['created_time']}}</span>
+                                                <h3>{{current_user.username}}</h3>
+                                            </div>
+                                            <div class="userbtnarea">
+                                                <button type="button" class="j-btn j-btnactive" data-toggle="modal" data-target="#reviewermodal">Assign Reviewer<em class="notificationtag">01</em></button>
+                                                <button type="submit" class="j-btn" data-toggle="modal" data-target="#feedbackmodal">Send Feedback</button>
+                                            </div>
+                                            <div class="description">
+                                                <p>{{paper['abstract']}}</p>
+                                            </div>
+                                            <div class="downloadheader">
+                                                <div class="title">
+                                                    <h3>Attached Document</h3>
+                                                    <a href="/{{paper['body']}}"><i class="fa fa-download"></i>Download</a>
+                                                </div>
+                                                <div class="docdetails">
+                                                    <figure class="docimg">
+                                                        <img src="http://amentotech.com/htmls/amentojourn/images/thumbnails/doc-img.jpg" alt="img description">
+                                                    </figure>
+                                                    <div class="docdescription">
+                                                        <h4>{{paper['filename']}}</h4>
+                                                        <span>File Size {{paper['filesize']}}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="feedbacktitle">
+                                            <h2>Reviewer’s Feedback</h2>
+                                        </div>
+                                        <div id="subaccordion" class="statusholder">
+                                            <div id="subheadingOne-{{paper['id']}}" class="statusheaderholder statuspadding" data-toggle="collapse" data-target="#subcollapseOne-{{paper['id']}}" aria-expanded="true" aria-controls="subcollapseOne-{{paper['id']}}" role="button">
+                                                <figure class="statusimg">
+                                                    <img src="http://amentotech.com/htmls/amentojourn/images/thumbnails/img-03.jpg" alt="img description">
+                                                </figure>
+                                                <div class="statusheader">
+                                                    <div class="statusasidetitle">
+                                                        <span>September 27, 2018</span>
+                                                        <h4>Smit Ryan</h4>
+                                                    </div>
+                                                    <div class="statusasidetitle statusasidetitlevtwo">
+                                                        <span>Status</span>
+                                                        <h4>Minor Rivision</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="subcollapseOne-{{paper['id']}}" class="statusdescription collapse active" aria-labelledby="subheadingOne-{{paper['id']}}" data-parent="#subaccordion">
+                                                <div class="description">
+                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laudantium, aiam  sunt voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                                                </div>
+                                                <ul class="statusdescriptionpoints">
+                                                    <li><span>Nemo enim ipsam voluptatem quia</span></li>
+                                                    <li><span>Adipisci velit, sed quia non numquam eius modi tempora</span></li>
+                                                    <li><span>Qui dolorem ipsum quia dolor sit amet</span></li>
+                                                </ul>
+                                                <div class="description">
+                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laudantium, aiam  sunt voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                                                </div>
+                                            </div>
+                                            <div id="subheadingtwo" class="statusheaderholder statuspadding" data-toggle="collapse" data-target="#subcollapsetwo" aria-expanded="true" aria-controls="subcollapsetwo" role="button">
+                                                <figure class="statusimg">
+                                                    <img src="http://amentotech.com/htmls/amentojourn/images/thumbnails/img-03.jpg" alt="img description">
+                                                </figure>
+                                                <div class="statusheader">
+                                                    <div class="statusasidetitle">
+                                                        <span>September 27, 2018</span>
+                                                        <h4>Jhon Doe</h4>
+                                                    </div>
+                                                    <div class="statusasidetitle statusasidetitlevtwo">
+                                                        <span>Status</span>
+                                                        <h4>Major Rivision</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="subcollapsetwo" class="statusdescription collapse active" aria-labelledby="subheadingtwo" data-parent="#subaccordion">
+                                                <div class="description">
+                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laudantium, aiam  sunt voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                                                </div>
+                                                <ul class="statusdescriptionpoints">
+                                                    <li><span>Nemo enim ipsam voluptatem quia</span></li>
+                                                    <li><span>Adipisci velit, sed quia non numquam eius modi tempora</span></li>
+                                                    <li><span>Qui dolorem ipsum quia dolor sit amet</span></li>
+                                                </ul>
+                                                <div class="description">
+                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laudantium, aiam  sunt voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                                                </div>
+                                            </div>
+                                            <div id="subheadingthree" class="statusheaderholder statuspadding" data-toggle="collapse" data-target="#subcollapsethree" aria-expanded="true" aria-controls="subcollapsethree" role="button">
+                                                <figure class="statusimg">
+                                                    <img src="http://amentotech.com/htmls/amentojourn/images/thumbnails/img-03.jpg" alt="img description">
+                                                </figure>
+                                                <div class="statusheader">
+                                                    <div class="statusasidetitle">
+                                                        <span>September 27, 2018</span>
+                                                        <h4>Smit Ryan</h4>
+                                                    </div>
+                                                    <div class="statusasidetitle statusasidetitlevtwo">
+                                                        <span>Status</span>
+                                                        <h4>Pending</h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="subcollapsethree" class="statusdescription collapse active" aria-labelledby="subheadingthree" data-parent="#subaccordion">
+                                                <div class="description">
+                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laudantium, aiam  sunt voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                                                </div>
+                                                <ul class="statusdescriptionpoints">
+                                                    <li><span>Nemo enim ipsam voluptatem quia</span></li>
+                                                    <li><span>Adipisci velit, sed quia non numquam eius modi tempora</span></li>
+                                                    <li><span>Qui dolorem ipsum quia dolor sit amet</span></li>
+                                                </ul>
+                                                <div class="description">
+                                                    <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit laudantium, aiam  sunt voluptatem quia voluptas sit aspernatur aut odit aut fugit.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                <nav class="pagination">
+                                    <ul>
+                                        <li class="prevpage"><a href="#"><i class="fa fa-angle-left"></i> Previous</a></li>
+                                        <li class="active"><a href="#">01</a></li>
+                                        <li><a href="#">02</a></li>
+                                        <li><a href="#">03</a></li>
+                                        <li><a href="#">04</a></li>
+                                        <li><a href="#">05</a></li>
+                                        <li class="nextpage"><a href="#">Next <i class="fa fa-angle-right"></i></a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

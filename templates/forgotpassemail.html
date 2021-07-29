@@ -1,0 +1,39 @@
+{% extends 'base2.html' %}
+{% block body %}
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <div class="widget forgotpassemail">
+          <div class="widgethead forgotpass">
+            <h5>Forgot Your Passoword</h5>
+            <div class="getmessages">
+              {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                  <ul class=flashes>
+                  {% for category, message in messages %}
+                    <div class="alert {{ category }}"> {{ message|capitalize }} </div>
+                  {% endfor %}
+                  </ul>
+                {% endif %}
+              {% endwith %}
+            </div>
+          </div>
+          <div class="widgetcontent">
+            <form class="formthem" method="POST">
+              {{ form.hidden_tag() }}
+              <fieldset>
+                <div class="form-group">
+                  <label for="emailcheck">Email</label>
+                  {{ form.email(class = 'form-control loginform', autofocus = true) }}
+                </div>
+                <div class="btnarea">
+                  {{ form.submit(class = 'btn btn-primary btn-lg btn-block') }}
+                </div>
+              </fieldset>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

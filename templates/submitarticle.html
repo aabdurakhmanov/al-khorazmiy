@@ -1,0 +1,169 @@
+{% extends 'base.html' %}
+{% block banner %} Submit Your Article {% endblock %}
+{% block body %}
+  <div class="sj-haslayout sectionspace">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-4 float-left">
+          <aside class="sj-sidebar">
+            <div class="profile-strenght">
+              <div class="headerhold">
+                <div class="dashboardbox">
+                  <h4>Article Strength</h4>
+                  <span>Consectetur adipisicing elit eiusmod</span>
+                </div>
+                <div class="ourskill">
+                  <div class="skill">
+                    <div class="skillholder" data-percent="80%">
+                      <div class="skillbar" style="width: 80%;"></div>
+                    </div>
+                    <span class="strengthcomplete">84% Complete</span>
+                  </div>
+                </div>
+              </div>
+
+              <ul class="profilecomplete">
+                <li class="profile">
+                  <i class="fa fa-check"></i>
+                  <span>Article Title</span>
+                </li>
+                <li class="profile">
+                  <i class="fa fa-check"></i>
+                  <span>First author</span>
+                </li>
+                <li class="profile">
+                  <i class="fa fa-times"></i>
+                  <span>Your Abstract</span>
+                </li>
+                <li class="profile">
+                  <i class="fa fa-check"></i>
+                  <span>Upload Document(s)</span>
+                </li>
+              </ul>
+              <div class="submitdetails">
+                <span>
+                  <h5>I accept all the submiting article`s</h5>
+                  <a href="#">Terms & Conditions</a>
+                </span>
+              </div>
+            </div>
+          </aside>
+        </div>
+        <div class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-8 float-right">
+          <div class="contentadd">
+            <div class="dashboardbox-right">
+              <h5>Add A New Article</h5>
+            </div>
+            <div class="addarticlehold">
+              <form action="" enctype="multipart/form-data" class="formtheme formartcile" id="paper-form" method="POST">
+                {{ form.hidden_tag() }}
+                <fieldset>
+                  <div class="group">
+                    <div class="form-group hright-side">
+                      <div class="form-group right-side">
+                        <!-- <span class="form-select">
+                          <select name="" id="select-right">
+                            <option value="">Select category (Optional)</option>
+                            <option value="">Name 1</option>
+                            <option value="">Name 2</option>
+                            <option value="">Name 3</option>
+                          </select>
+                        </span> -->
+                        {{ form.name }}
+                      </div>
+                    </div>
+                  </div>  
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    {{ form.title(class = 'form-control ', autofocus = true, placeholder='') }}
+                    <div class="form-group forerrorsonly name">
+                      {% if "title" in form.errors %}
+                        {{ form.errors['title'][0] }}
+                      {% endif %}
+                    </div>
+                  </div>  
+                  <div class="form-group">
+                    <label for="abstract">Abstract</label>
+                    {{ form.abstract(class = 'form-control', autofocus = true, placeholder='') }}
+                    <div class="form-group forerrorsonly name">
+                      {% if "abstract" in form.errors %}
+                        {{ form.errors['abstract'][0] }}
+                      {% endif %}
+                    </div>
+                  </div>                
+                  <div class="form-group">
+                    <label for="keyword">Keyword</label>
+                    {{ form.keyword(class = 'form-control ', autofocus = true, placeholder='') }}
+                    <div class="form-group forerrorsonly name">
+                      {% if "keyword" in form.errors %}
+                        {{ form.errors['keyword'][0] }}
+                      {% endif %}
+                    <!-- <textarea placeholder="Add Your Abstract"></textarea> -->
+                  </div>
+                  
+                  <div class="form-group">
+                    <label for="body">Body</label>
+                    {{ form.body(class = 'form-control  submit-body', autofocus = true, placeholder='') }}
+                    <div class="form-group forerrorsonly name bodyuploadfile">
+                      {% if "body" in form.errors %}
+                        {{ form.errors['body'][0] }}
+                      {% endif %}
+                    <!-- <textarea placeholder="Add Your Abstract"></textarea> -->
+                  </div>
+                  <div class="form-group">
+                    <label for="reterence">Reference</label>
+                    {{ form.reference(class = 'form-control ', autofocus = true, placeholder='') }}
+                    <div class="form-group forerrorsonly name">
+                      {% if "reference" in form.errors %}
+                        {{ form.errors['reference'][0] }}
+                      {% endif %}
+                    <!-- <textarea placeholder="Add Your Abstract"></textarea> -->
+                  </div>                  
+                </fieldset>
+                {{ form.submit(class='subbtnarticle btn btn-primary') }}
+              </form>
+              <!-- <form action="" class="formtheme formaddproject">
+                <fieldset>
+                  <div class="inputfile">
+                    <h3>Upload Powerpoint</h3>
+                    <label for="sj-uploadimgvtwo">
+                      <span>Upload Your File Here</span>
+                      <span class="iclose-right"><i class="fa fa-upload"></i></span>
+                      <input type="file" name="uploadimgtwo" id="uploadimgvtwo">
+                    </label>
+                    <div class="filedetails">
+                      <h3></h3>
+                      <span>
+                        <div class="rightic">
+                          <i class="fa fa-exclamation"></i>
+                          <em>Not Uploaded Yet</em>
+                        </div>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="inputfile">
+                    <h3>Upload Handout</h3>
+                    <label for="sj-uploadimgvtwoa">
+                      <span>Final_handout_2019.pdf</span>
+                      <span class="iclose-right"><i class="fa fa-close"></i></span>
+                      <input type="file" name="uploadimgtwo">
+                    </label>
+                    <div class="filedetails">
+                      <h3></h3>
+                      <div class="rightic">
+                        <span>
+                          <i class="fa fa-check"></i>
+                          <em>File Uploaded</em>
+                        </span>
+                      </div>  
+                    </div>
+                  </div>
+                </fieldset>
+              </form> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

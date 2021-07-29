@@ -1,0 +1,51 @@
+{% extends 'base2.html' %}
+{% block body %}
+<div id="sj-homebanner" class="sj-homebanner">
+    <div class="container">
+        <div class="row">
+            <div id="leftbanner" class="col-6 col-sm-12 col-md-6 col-lg-6">
+                <div class="sj-postbook">
+                    <figure class="sj-featureimg">
+                        
+                        <div class="sj-bookimg">
+                            <img id="journal-1" src="{{ url_for('static', filename='imgs/Sceince.jpg') }}" alt="">
+                        </div>
+                    </figure>
+                </div>
+            </div>
+            <div id="successMessage" class="getmessages msforindex">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                  {% if messages %}
+                    <ul class=flashes>
+                    {% for category, message in messages %}
+                      <div class="alert {{ category }}"> {{ message|capitalize }} &times; </div>
+                      <!-- <li>{{ message }}</li> -->
+                    {% endfor %}
+                    </ul>
+                  {% endif %}
+                {% endwith %}
+            </div>                  
+            <div id="rightbanner" class="col-6 col-sm-12 col-md-6 col-lg-6">
+                <div class="sj-bannercontent">
+                    <h1>
+                        <span>We Welcome Latest Research Articles in Field of Science</span>
+                        <div class="line-bottom"></div>
+                    </h1>
+                    <div class="description">
+                        <p>De unto fernendo bonito elesortamenta de unta ele bela ahkum nos demos sobre masa
+                            <a class="past-read" href="#">Read more</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    setTimeout(function() {
+    $('#successMessage').fadeOut('fast');
+    }, 3000); // <-- time in milliseconds
+</script>
+
+{% endblock %}
