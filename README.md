@@ -1,11 +1,49 @@
-
-[![Developer](https://img.shields.io/badge/developed__by-AAbdurakhmanov-success)](https://t.me/foeliemanner)
-![Top Languages](https://img.shields.io/github/languages/top/odilxon/al_khorezmiy)
-![Deploy](https://github.com/odilxon/al_khorezmiy/workflows/Deploy/badge.svg?branch=main)
-[![Build Status](https://travis-ci.com/odilxon/al_khorezmiy.svg?token=qx8shfzfnPzUq8PqwrQm&branch=main)](https://travis-ci.com/odilxon/al_khorezmiy)
-[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fodilxon%2Fal_khorezmiy.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fodilxon%2Fal_khorezmiy?ref=badge_shield)
+# Al-Xorazmiy – Ilmiy jurnalni boshqarish tizimi  
+# Al-Khorazmiy – Scientific Journal Management System
 
 
+[![GitHub Repo](https://img.shields.io/badge/GitHub-aabdurakhmanov-blue?style=flat&logo=github)](https://github.com/aabdurakhmanov)
+[![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](#license)
+[![Uzbek TTS](https://img.shields.io/badge/Language-Uzbek-blueviolet?style=flat)](#features)
 
-NEW JOURNAL
+Flask asosida ishlab chiqilgan veb platforma bo‘lib, foydalanuvchilarga ilmiy maqolalarni yuborish, tahrirlovchilar tomonidan ko‘rib chiqish va ularni onlayn chop etish imkonini beradi.  
+A web platform built with Flask that allows users to submit, review, and publish academic articles online.
 
+---
+
+## 🌐 Xususiyatlar | Features
+
+- 📄 Mualliflar tomonidan maqola yuborish  
+  📄 Article submission by authors  
+- 🧑‍💼 Rollarga asoslangan tizim (muallif, rецензент, muharrir)  
+  🧑‍💼 Role-based system (author, reviewer, editor)  
+- 📊 Maqola holatini ko‘rib chiqish va boshqarish  
+  📊 Review status tracking and management  
+- ⚙️ Ma’muriy panel orqali maqolalar va foydalanuvchilarni boshqarish  
+  ⚙️ Admin panel to manage articles and users  
+- 📂 PDF yuklash va maqola ma’lumotlarini tahrirlash  
+  📂 PDF upload and metadata editing  
+- 🌍 Ko‘p tilli interfeys (o‘zbek, rus, ingliz)  
+  🌍 Multilingual interface (Uzbek, Russian, English)
+
+---
+
+## ⚙️ Texnologiyalar | Tech Stack
+
+- Python (Flask)  
+- SQLAlchemy (PostgreSQL)  
+- Jinja2  
+- HTML, CSS, Bootstrap  
+- Git, GitHub
+
+---
+
+## 🚀 Loyihani ishga tushirish | Getting Started
+
+```bash
+git clone https://github.com/aabdurakhmanov/al-khorazmiy.git
+cd al-khorazmiy
+python -m venv venv
+source venv/bin/activate  # Windows uchun: venv\Scripts\activate
+pip install -r requirements.txt
+flask run
