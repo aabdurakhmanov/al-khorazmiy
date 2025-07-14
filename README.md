@@ -5,6 +5,8 @@
 [![GitHub Repo](https://img.shields.io/badge/GitHub-aabdurakhmanov-blue?style=flat&logo=github)](https://github.com/aabdurakhmanov)
 [![License](https://img.shields.io/badge/License-MIT-green.svg?style=flat)](#license)
 [![Uzbek TTS](https://img.shields.io/badge/Language-Uzbek-blueviolet?style=flat)](#features)
+![Build Status](https://img.shields.io/badge/build-passing-brightgreen)
+![Flask](https://img.shields.io/badge/Framework-Flask-blue)
 
 Flask asosida ishlab chiqilgan veb platforma bo‘lib, foydalanuvchilarga ilmiy maqolalarni yuborish, tahrirlovchilar tomonidan ko‘rib chiqish va ularni onlayn chop etish imkonini beradi.  
 A web platform built with Flask that allows users to submit, review, and publish academic articles online.
